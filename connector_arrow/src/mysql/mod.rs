@@ -21,6 +21,10 @@ impl<C: Queryable> MySQLConnection<C> {
     pub fn unwrap(self) -> C {
         self.conn
     }
+
+    pub fn ping(&self) -> Result<(),Error> {
+        self.conn.ping()
+    }
 }
 
 impl<C: Queryable> Connector for MySQLConnection<C> {
